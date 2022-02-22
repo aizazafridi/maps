@@ -26,12 +26,29 @@
     accessToken: 'pk.eyJ1IjoiYWl6b29hZnJpZGkiLCJhIjoiY2t6eWZrcTBrMGFzeDJ4azBnbG9qNzNvOCJ9.0R6F-Bu7jtTdYbWM3ATeSQ'
   }).addTo(map);
 
-  var marker = L.marker([47.551430, -52.730650]).addTo(map);
-  marker.bindPopup("<b>Smart Ice Office</b> <br /> 53 Blackmarsh Road");
-  marker.on('mouseover', function (e) {
+  var homeIcon = L.icon({
+    iconUrl: 'home.png',
+    iconSize: [30, 30],
+  });
+
+  var office = L.marker([47.551430, -52.730650]).addTo(map);
+  var home = L.marker([47.56414, -52.75968], {icon: homeIcon}).addTo(map);
+
+  //home.bindPopup("<b>Home</b>").openPopup();
+
+  office.bindPopup("<b>Smart Ice Office</b> <br /> 53 Blackmarsh Road");
+  office.on('mouseover', function (e) {
     this.openPopup();
     });
-  marker.on('mouseout', function (e) {
+  office.on('mouseout', function (e) {
+    this.closePopup();
+    });
+
+  home.bindPopup("<b>Smart Ice Office</b> <br /> 53 Blackmarsh Road");
+  home.on('mouseover', function (e) {
+    this.openPopup();
+    });
+  home.on('mouseout', function (e) {
     this.closePopup();
     });
   /*marker.bindPopup("<b>Smart Ice Office</b>").openPopup();
