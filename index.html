@@ -1,0 +1,54 @@
+<html>
+<head>
+  <title>A Leaflet map!</title>
+  <link rel="stylesheet" href="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7.3/leaflet.css" />
+  <script src="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7.3/leaflet.js"></script>
+  <style>
+    #map{ width: 900px; height: 500px }
+  </style>
+</head>
+<body>
+
+  <div id="map"></div>
+
+  <script>
+
+  // initialize the map
+  var map = L.map('map').setView([47.562670, -52.710890],13);
+
+  // load a tile layer
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoiYWl6b29hZnJpZGkiLCJhIjoiY2t6eWZrcTBrMGFzeDJ4azBnbG9qNzNvOCJ9.0R6F-Bu7jtTdYbWM3ATeSQ'
+  }).addTo(map);
+
+  var marker = L.marker([47.551430, -52.730650]).addTo(map);
+  marker.bindPopup("<b>Smart Ice Office</b> <br /> 53 Blackmarsh Road");
+  marker.on('mouseover', function (e) {
+    this.openPopup();
+    });
+  marker.on('mouseout', function (e) {
+    this.closePopup();
+    });
+  /*marker.bindPopup("<b>Smart Ice Office</b>").openPopup();
+
+  var popup = L.popup();
+
+  function onMapClick(e) {
+      popup
+          .setLatLng(e.latlng)
+          .setContent("You clicked the map at " + e.latlng.toString())
+          .openOn(map);
+  }
+
+  map.on('click', onMapClick);*/
+
+
+
+  </script>
+</body>
+</html>
